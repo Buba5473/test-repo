@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+    
+    <description>Smart MRC PDF Compressor</description>
+    
+    <!-- Активация современных стилей оформления и поддержка Task Dialog API -->
+    <dependency>
+        <dependentAssembly>
+            
+        </dependentAssembly>
+    </dependency>
+    
+    <!-- Декларация совместимости с современными подсистемами ядра Windows -->
+    <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
+        <application>
+            <!-- Жесткая совместимость с Windows 10 и Windows 11 -->
+            <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}"/>
+        </application>
+    </compatibility>
+    
+    <!-- Настройки приложения для работы в изолированном контексте Windows 10 -->
+    <application xmlns="urn:schemas-microsoft-com:asm.v3">
+        <windowsSettings>
+            <!-- Активация поддержки длинных путей к PDF-файлам (более 260 символов) -->
+            <longPathAware xmlns="http://microsoft.com">true</longPathAware>
+            <!-- Принудительное включение UTF-8 в качестве внутренней кодировки процессов -->
+            <activeCodePage xmlns="http://microsoft.com">UTF-8</activeCodePage>
+        </windowsSettings>
+    </application>
+</assembly>
