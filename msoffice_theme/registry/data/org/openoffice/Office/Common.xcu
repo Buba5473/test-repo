@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oor:component-data xmlns:oor="http://openoffice.org" xmlns:xs="http://w3.org" oor:name="Common" oor:package="org.openoffice.Office">
+    <node oor:name="Font">
+        <node oor:name="Substitution">
+            <prop oor:name="Replacement" oor:type="xs:boolean">
+                <value>true</value>
+            </prop>
+            <node oor:name="FontPairs">
+                <!-- 1. Интерфейс и обычный текст -> Aptos Display -->
+                <node oor:name="_0" oor:op="replace">
+                    <prop oor:name="Always" oor:type="xs:boolean"><value>true</value></prop>
+                    <prop oor:name="Original" oor:type="xs:string"><value>Andika</value></prop>
+                    <prop oor:name="Substitute" oor:type="xs:string"><value>Aptos Display</value></prop>
+                </node>
+                <node oor:name="_1" oor:op="replace">
+                    <prop oor:name="Always" oor:type="xs:boolean"><value>true</value></prop>
+                    <prop oor:name="Original" oor:type="xs:string"><value>Liberation Sans</value></prop>
+                    <prop oor:name="Substitute" oor:type="xs:string"><value>Aptos Display</value></prop>
+                </node>
+                <!-- 2. Формулы и программный код (Math / Basic) -> Aptos Mono -->
+                <node oor:name="_2" oor:op="replace">
+                    <prop oor:name="Always" oor:type="xs:boolean"><value>true</value></prop>
+                    <prop oor:name="Original" oor:type="xs:string"><value>Courier New</value></prop>
+                    <prop oor:name="Substitute" oor:type="xs:string"><value>Aptos Mono</value></prop>
+                </node>
+                <node oor:name="_3" oor:op="replace">
+                    <prop oor:name="Always" oor:type="xs:boolean"><value>true</value></prop>
+                    <prop oor:name="Original" oor:type="xs:string"><value>Liberation Mono</value></prop>
+                    <prop oor:name="Substitute" oor:type="xs:string"><value>Aptos Mono</value></prop>
+                </node>
+                <!-- 3. Тексты с засечками -> Aptos Serif -->
+                <node oor:name="_4" oor:op="replace">
+                    <prop oor:name="Always" oor:type="xs:boolean"><value>true</value></prop>
+                    <prop oor:name="Original" oor:type="xs:string"><value>Times New Roman</value></prop>
+                    <prop oor:name="Substitute" oor:type="xs:string"><value>Aptos Serif</value></prop>
+                </node>
+            </node>
+        </node>
+        <node oor:name="Render">
+            <prop oor:name="FontAntialiasing" oor:type="xs:boolean"><value>true</value></prop>
+        </node>
+    </node>
+</oor:component-data>

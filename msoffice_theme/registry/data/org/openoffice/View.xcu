@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oor:component-data xmlns:oor="http://openoffice.org" 
+                    xmlns:xs="http://w3.org" 
+                    oor:name="View" 
+                    oor:package="org.openoffice">
+    <node oor:name="Themes">
+        <node oor:name="MSOffice2022" oor:op="replace">
+            
+            <!-- Режим темы пользователя (0 = Авто/Системная, 1 = Всегда светлая, 2 = Всегда темная) -->
+            <prop oor:name="UserThemeMode" oor:type="xs:int">
+                <value>0</value>
+            </prop>
+
+            <!-- 1. Writer (Фирменный синий Microsoft Word - #185ABD) -->
+            <prop oor:name="WriterApplicationBackground" oor:type="xs:int">
+                <value>1596093</value>
+            </prop>
+            
+            <!-- 2. Calc (Фирменный зеленый Microsoft Excel - #107C41) -->
+            <prop oor:name="CalcApplicationBackground" oor:type="xs:int">
+                <value>1080385</value>
+            </prop>
+            
+            <!-- 3. Impress / Презентации (Оранжево-красный PowerPoint - #B7472A) -->
+            <prop oor:name="ImpressApplicationBackground" oor:type="xs:int">
+                <value>12011306</value>
+            </prop>
+            
+            <!-- 4. Draw / Векторная графика (Голубой бренд Visio/Design - #0078D4) -->
+            <prop oor:name="DrawApplicationBackground" oor:type="xs:int">
+                <value>30932</value>
+            </prop>
+            
+            <!-- 5. Math / Редактор формул (Строгий темно-серый стиль - #333333) -->
+            <prop oor:name="MathApplicationBackground" oor:type="xs:int">
+                <value>3355443</value>
+            </prop>
+            
+            <!-- 6. Base / Базы данных (Бордовый Microsoft Access - #A3000B) -->
+            <prop oor:name="BaseApplicationBackground" oor:type="xs:int">
+                <value>10682379</value>
+            </prop>
+
+            <!-- Системные параметры отображения элементов под MS Office -->
+            <prop oor:name="ButtonType" oor:type="xs:short">
+                <value>1</value> <!-- Только значки на панелях, плоский лаконичный стиль -->
+            </prop>
+            
+            <prop oor:name="IconTheme" oor:type="xs:string">
+                <value>ms2022</value> <!-- Базовое имя для нашего оптимизированного пула иконок -->
+            </prop>
+            
+            <prop oor:name="MenuIcons" oor:type="xs:short">
+                <value>1</value> <!-- Обязательное включение иконок в выпадающих контекстных меню -->
+            </prop>
+            
+        </node>
+    </node>
+</oor:component-data>

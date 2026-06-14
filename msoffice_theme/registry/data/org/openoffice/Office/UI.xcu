@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oor:component-data xmlns:oor="http://openoffice.org" 
+                    xmlns:xs="http://w3.org" 
+                    oor:name="UI" 
+                    oor:package="org.openoffice.Office">
+    
+    <!-- Переключение стандартных панелей на ленточный макет (Notebookbar) -->
+    <node oor:name="Notebookbar">
+        <node oor:name="Layouts">
+            <prop oor:name="ActiveLayout" oor:type="xs:string">
+                <value>ModernRibbon</value>
+            </prop>
+        </node>
+    </node>
+    
+    <!-- Управление видимостью элементов главного окна -->
+    <node oor:name="AddonUI">
+        <node oor:name="OfficeMenuBar">
+            <!-- Скрытие классической строки текстового меню для симуляции Ribbon -->
+            <prop oor:name="Visible" oor:type="xs:boolean">
+                <value>false</value>
+            </prop>
+        </node>
+    </node>
+    
+</oor:component-data>

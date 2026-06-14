@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dlg:window PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "dialog.dtd">
+<dlg:window dlg:id="ThemeDialog" 
+            dlg:title="Настройка темы MS Office 2022" 
+            dlg:left="150" 
+            dlg:top="150" 
+            dlg:width="180" 
+            dlg:height="100" 
+            xmlns:dlg="http://openoffice.org" 
+            xmlns:script="http://openoffice.org">
+    <dlg:bulletinboard>
+        <dlg:radiogroup>
+            <dlg:radio dlg:id="RadioAuto" dlg:tabindex="0" dlg:left="15" dlg:top="15" dlg:width="150" dlg:height="12" dlg:value="Auto" dlg:label="Синхронизировать с системой (Авто)"/>
+            <dlg:radio dlg:id="RadioLight" dlg:tabindex="1" dlg:left="15" dlg:top="32" dlg:width="150" dlg:height="12" dlg:value="Light" dlg:label="Принудительная светлая тема"/>
+            <dlg:radio dlg:id="RadioDark" dlg:tabindex="2" dlg:left="15" dlg:top="49" dlg:width="150" dlg:height="12" dlg:value="Dark" dlg:label="Принудительная темная тема"/>
+        </dlg:radiogroup>
+        <dlg:button dlg:id="BtnSave" dlg:tabindex="3" dlg:left="50" dlg:top="72" dlg:width="80" dlg:height="16" dlg:buttontype="OK" dlg:label="Применить"/>
+    </dlg:bulletinboard>
+</dlg:window>

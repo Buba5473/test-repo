@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org" script:name="ThemeSwitcher" script:language="Basic">
+Dim oDialog As Object
+
+' Отображение диалогового окна настроек из меню Сервис
+Sub ShowDialog
+    Dim oLib As Object
+    Dim oDlgDesc As Object
+    
+    DialogLibraries.LoadLibrary("MSOfficeTheme")
+    oLib = DialogLibraries.getByName("MSOfficeTheme")
+    oDlgDesc = oLib.getByName("ThemeDialog")
+    oDialog = CreateUnoDialog(oDlgDesc)
+    
+    Dim mode As Integer
+    mode = GetSavedThemeMode()
+    
+    If mode = 1 Then
+        oDialog.getControl("RadioLight").State = True
+    ElseIf mode = 2 Then
+        oDialog.getControl("RadioDark").State = True
+    Else
+        oDialog.getControl("RadioAuto").State = True
+    End If
+    
+    If oDialog.execute() = 1 Then
+        Dim selectedMode As Integer
+        selectedMode = 0
+        If oDialog.getControl("RadioLight").State Then selectedMode = 1
+        If oDialog.getControl("RadioDark").State Then selectedMode = 2
+        
+        SaveThemeMode(selectedMode)
+        SyncWithSystem()
+    End If
+End Sub
+
+' Метод автозапуска при старте OpenOffice
+Sub SyncWithSystem
+    Dim mode As Integer
+    Dim isDark As Boolean
+    isDark = False
+    
+    mode = GetSavedThemeMode()
+    
+    If mode = 1 Then
+        isDark = False
+    ElseIf mode = 2 Then
+        isDark = True
+    Else
+        On Error Resume Next
+        If GetGUIType() = 1 Then
+            Dim oShell As Object
+            oShell = CreateObject("WScript.Shell")
+            Dim regValue As Variant
+            regValue = oShell.RegRead("HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\AppsUseLightTheme")
+            If Not IsEmpty(regValue) And regValue = 0 Then isDark = True
+        Else
+            Dim res As String
+            res = Shell("gsettings get org.gnome.desktop.interface color-scheme")
+            If InStr(LCase(res), "dark") > 0 Then isDark = True
+        End If
+    End If
+
+    ApplyThemePalette(isDark)
+End Sub
+
+Function GetSavedThemeMode() As Integer
+    On Error Resume Next
+    Dim oCP As Object, oCU As Object
+    Dim aNP(0) As New com.sun.star.beans.PropertyValue
+    oCP = CreateUnoService("com.sun.star.configuration.ConfigurationProvider")
+    aNP(0).Name = "nodepath"
+    aNP(0).Value = "org.openoffice.View/Themes/MSOffice2022"
+    oCU = oCP.createInstanceWithArguments("com.sun.star.configuration.ConfigurationAccess", aNP())
+    GetSavedThemeMode = oCU.UserThemeMode
+    If Err <> 0 Then GetSavedThemeMode = 0
+End Function
+
+Sub SaveThemeMode(mode As Integer)
+    On Error Resume Next
+    Dim oCP As Object, oCU As Object
+    Dim aNP(0) As New com.sun.star.beans.PropertyValue
+    oCP = CreateUnoService("com.sun.star.configuration.ConfigurationProvider")
+    aNP(0).Name = "nodepath"
+    aNP(0).Value = "org.openoffice.View/Themes/MSOffice2022"
+    oCU = oCP.createInstanceWithArguments("com.sun.star.configuration.ConfigurationUpdateAccess", aNP())
+    oCU.UserThemeMode = mode
+    oCU.commitChanges()
+End Sub
+
+Sub ApplyThemePalette(isDark As Boolean)
+    Dim oCP As Object, oCU As Object
+    Dim aNP(0) As New com.sun.star.beans.PropertyValue
+    oCP = CreateUnoService("com.sun.star.configuration.ConfigurationProvider")
+    aNP(0).Name = "nodepath"
+    aNP(0).Value = "org.openoffice.View/Themes/MSOffice2022"
+    oCU = oCP.createInstanceWithArguments("com.sun.star.configuration.ConfigurationUpdateAccess", aNP())
+    
+    If isDark Then
+        oCU.WriterApplicationBackground = 2105376
+        oCU.CalcApplicationBackground = 1644825
+        oCU.ImpressApplicationBackground = 2631720
+        oCU.DrawApplicationBackground = 2105376
+        oCU.MathApplicationBackground = 1842204
+        oCU.BaseApplicationBackground = 2368548
+        oCU.IconTheme = "colibre_dark"
+    Else
+        oCU.WriterApplicationBackground = 1596093
+        oCU.CalcApplicationBackground = 1080385
+        oCU.ImpressApplicationBackground = 12011306
+        oCU.DrawApplicationBackground = 30932
+        oCU.MathApplicationBackground = 3355443
+        oCU.BaseApplicationBackground = 10682379
+        oCU.IconTheme = "colibre"
+    End If
+    oCU.commitChanges()
+End Sub
+</script:module>

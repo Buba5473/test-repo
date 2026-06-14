@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oor:component-data xmlns:oor="http://openoffice.org" 
+                    xmlns:xs="http://w3.org" 
+                    oor:name="Accelerators" 
+                    oor:package="org.openoffice.Office">
+    <node oor:name="PrimaryKeys">
+        
+        <!-- 1. Глобальные горячие клавиши для всех модулей пакета -->
+        <node oor:name="Global">
+            
+            <!-- MS Office стиль: Ctrl+H — Диалог «Замена» (в OO по умолчанию Ctrl+F) -->
+            <node oor:name="H_Mod1" oor:op="replace">
+                <prop oor:name="Command" oor:type="xs:string">
+                    <value>.uno:SearchDialog</value>
+                </prop>
+            </node>
+            
+            <!-- MS Office стиль: Ctrl+F — Диалог «Быстрый поиск» -->
+            <node oor:name="F_Mod1" oor:op="replace">
+                <prop oor:name="Command" oor:type="xs:string">
+                    <value>.uno:FindDialog</value>
+                </prop>
+            </node>
+            
+            <!-- MS Office стиль: Ctrl+K — Вставка/редактирование гиперссылки -->
+            <node oor:name="K_Mod1" oor:op="replace">
+                <prop oor:name="Command" oor:type="xs:string">
+                    <value>.uno:HyperlinkDialog</value>
+                </prop>
+            </node>
+            
+            <!-- MS Office стиль: F5 — Запуск демонстрации презентации с первого слайда -->
+            <node oor:name="F5" oor:op="replace">
+                <prop oor:name="Command" oor:type="xs:string">
+                    <value>.uno:Presentation</value>
+                </prop>
+            </node>
+            
+        </node>
+        
+        <!-- 2. Специфичные горячие клавиши для модуля Math (Редактор формул) -->
+        <node oor:name="Math">
+            
+            <!-- MS Office стиль: Ctrl + Plus — Приближение масштаба отображения -->
+            <node oor:name="ADD_Mod1" oor:op="replace">
+                <prop oor:name="Command" oor:type="xs:string">
+                    <value>.uno:ZoomIn</value>
+                </prop>
+            </node>
+            
+            <!-- MS Office стиль: Ctrl + Minus — Отдаление масштаба отображения -->
+            <node oor:name="SUBTRACT_Mod1" oor:op="replace">
+                <prop oor:name="Command" oor:type="xs:string">
+                    <value>.uno:ZoomOut</value>
+                </prop>
+            </node>
+            
+        </node>
+        
+    </node>
+</oor:component-data>
