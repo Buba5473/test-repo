@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE script:library PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "library.dtd">
-<script:library xmlns:script="http://openoffice.org" 
-                script:name="MSOfficeTheme" 
-                script:readonly="false" 
-                script:embedded="true">
-    <script:module script:name="ThemeSwitcher"/>
-    <script:dialog script:name="ThemeDialog"/>
-</script:library>
