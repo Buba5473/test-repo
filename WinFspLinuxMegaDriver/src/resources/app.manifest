@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3">
+  
+  <!-- Идентификация бинарного файла службы -->
+  
+  
+  <description>WinFSP Universal Linux File System Driver Service</description>
+
+  <!-- Жесткий запрос прав локального Администратора для прямого DMA/IO доступа к секторам дисков -->
+  <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
+    <security>
+      <requestedPrivileges>
+        <requestedExecutionLevel level="requireAdministrator" uiAccess="false"/>
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+
+  <!-- Объявление явной совместимости с современными подсистемами ядра Windows -->
+  <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
+    <application>
+      <!-- Windows 10 and Windows 11 -->
+      <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}"/>
+    </application>
+  </compatibility>
+
+  <!-- Оптимизация подсистемы Win32 под стандарты файловых систем Linux -->
+  <asmv3:application>
+    <asmv3:windowsSettings>
+      <!-- Поддержка путей длиннее 260 символов (MAX_PATH) для глубоких вложенностей Linux каталогов -->
+      <longPathAware xmlns="http://microsoft.com">true</longPathAware>
+      <!-- Форсирование нативной кодировки UTF-8 для корректной трансляции имен файлов из dentry -->
+      <activeCodePage xmlns="http://microsoft.com">UTF-8</activeCodePage>
+    </asmv3:windowsSettings>
+  </asmv3:application>
+
+</assembly>
